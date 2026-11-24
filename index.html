@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imperio Dental | Clínica Odontológica</title>
+  <meta name="description" content="Imperio Dental: odontología integral con atención personalizada, tecnología actual y un trato cercano y profesional.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c2430;
+      --ink-soft: #4a5361;
+      --muted: #8a919b;
+      --line: #e3e0da;
+      --bg: #faf9f7;
+      --bg-alt: #f2f0ec;
+      --accent: #8c7a5b;
+      --white: #ffffff;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+    /* Tipografía */
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; letter-spacing: 0.01em; }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* Encabezado */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(250, 249, 247, 0.94);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 38px; height: 38px;
+      border: 1px solid var(--ink);
+      display: grid; place-items: center;
+      font-family: var(--serif); font-size: 17px; font-weight: 600; letter-spacing: 0.04em;
+    }
+    .brand-name { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 40px; list-style: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links a { color: var(--ink-soft); transition: color .2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      font-family: var(--sans);
+      font-size: 13px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid var(--ink);
+      background: var(--ink); color: var(--white);
+      cursor: pointer;
+      transition: background .25s, color .25s;
+    }
+    .btn:hover { background: transparent; color: var(--ink); }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--white); }
+    .nav .btn { padding: 11px 22px; font-size: 12px; }
+
+    /* Hero */
+    .hero { padding: 140px 0 130px; border-bottom: 1px solid var(--line); }
+    .hero-inner { max-width: 760px; }
+    .hero h1 { font-size: clamp(44px, 6vw, 76px); margin-bottom: 30px; }
+    .hero h1 .h1-blue { color: #2f4a6e; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p { font-size: 18px; color: var(--ink-soft); max-width: 560px; margin-bottom: 48px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 110px; border-top: 1px solid var(--line); }
+    .stat { padding: 34px 0 0; }
+    .stat + .stat { padding-left: 40px; border-left: 1px solid var(--line); }
+    .stat-num { font-family: var(--serif); font-size: 44px; line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--muted); letter-spacing: 0.06em; margin-top: 10px; }
+
+    /* Secciones */
+    section { padding: 120px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 72px; }
+    .section-head h2 { font-size: clamp(34px, 4vw, 50px); }
+    .section-head p { color: var(--ink-soft); max-width: 440px; }
+
+    /* Servicios */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .service {
+      padding: 44px 36px 48px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: var(--bg);
+      transition: background .25s;
+    }
+    .service:hover { background: var(--white); }
+    .service-num { font-family: var(--serif); font-size: 15px; color: var(--accent); letter-spacing: 0.1em; }
+    .service h3 { font-size: 27px; margin: 18px 0 14px; }
+    .service p { font-size: 15px; color: var(--ink-soft); }
+
+    /* Nosotros */
+    .about { background: var(--bg-alt); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
+    .hero-image { margin-top: 90px; aspect-ratio: 21 / 9; overflow: hidden; background: var(--bg-alt); }
+    .hero .stats { margin-top: 0; }
+    .about-visual { aspect-ratio: 4 / 5; overflow: hidden; background: var(--white); }
+
+    /* Instalaciones */
+    .facilities { padding-top: 0; }
+    .gallery { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; height: 620px; }
+    .gallery figure { position: relative; overflow: hidden; background: var(--bg-alt); }
+    .gallery .g-large { grid-row: span 2; }
+    .gallery figcaption {
+      position: absolute; left: 0; bottom: 0;
+      background: var(--bg); color: var(--ink);
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 10px 18px;
+    }
+    .about h2 { font-size: clamp(34px, 4vw, 50px); margin-bottom: 28px; }
+    .about p { color: var(--ink-soft); margin-bottom: 18px; }
+    .values { list-style: none; margin-top: 40px; border-top: 1px solid var(--line); }
+    .values li { display: flex; justify-content: space-between; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+    .values li strong { font-weight: 500; }
+    .values li span { color: var(--muted); text-align: right; }
+
+    /* Proceso */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .step { border-top: 1px solid var(--ink); padding-top: 28px; }
+    .step-num { font-family: var(--serif); font-size: 15px; color: var(--muted); }
+    .step h3 { font-size: 24px; margin: 12px 0 10px; }
+    .step p { font-size: 15px; color: var(--ink-soft); }
+
+    /* Testimonio */
+    .quote { text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .quote blockquote { font-family: var(--serif); font-size: clamp(26px, 3.2vw, 38px); font-style: italic; line-height: 1.4; max-width: 820px; margin: 0 auto 28px; }
+    .quote cite { font-style: normal; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    /* Contacto */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 96px; }
+    .contact h2 { font-size: clamp(34px, 4vw, 50px); margin-bottom: 24px; }
+    .contact-info { margin-top: 44px; display: grid; gap: 26px; }
+    .contact-info dt { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .contact-info dd { font-size: 16px; }
+    form { display: grid; gap: 26px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    label { display: block; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    input, select, textarea {
+      width: 100%;
+      font-family: var(--sans); font-size: 16px; font-weight: 300; color: var(--ink);
+      background: transparent;
+      border: none; border-bottom: 1px solid #cfcbc3;
+      padding: 10px 0;
+      outline: none;
+      border-radius: 0;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-bottom-color: var(--ink); }
+    textarea { resize: vertical; min-height: 90px; }
+    .form-note { font-size: 13px; color: var(--muted); }
+    .form-ok { display: none; font-size: 15px; color: var(--accent); }
+
+    /* Pie */
+    footer { background: var(--ink); color: #c9ccd1; padding: 72px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    footer .brand-mark { border-color: #c9ccd1; }
+    footer .brand-name { color: var(--white); }
+    footer p { font-size: 14px; margin-top: 20px; max-width: 320px; }
+    footer h4 { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); margin-bottom: 18px; }
+    footer ul { list-style: none; font-size: 14px; display: grid; gap: 10px; }
+    footer a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 28px; font-size: 12px; letter-spacing: 0.06em; color: #8b9099; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .section-head, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-visual { max-width: 420px; }
+      .hero-image { aspect-ratio: 16 / 9; margin-top: 64px; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
+      .gallery .g-large { grid-row: auto; grid-column: span 2; aspect-ratio: 16 / 9; }
+      .gallery figure:not(.g-large) { aspect-ratio: 1 / 1; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 22px; }
+      .brand-name { font-size: 18px; }
+      .nav .btn { display: none; }
+      .hero { padding: 90px 0 80px; }
+      section { padding: 84px 0; }
+      .services, .steps, .row, .footer-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .stat + .stat { padding-left: 0; border-left: none; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery .g-large { grid-column: auto; }
+      .gallery figure:not(.g-large) { aspect-ratio: 4 / 3; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Imperio Dental, inicio">
+        <span class="brand-mark">ID</span>
+        <span class="brand-name">Imperio Dental</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#instalaciones">Instalaciones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#contacto" class="btn">Agendar cita</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow">Clínica odontológica</span>
+          <h1><span class="h1-blue">Odontología de excelencia,</span> <em>con un trato cercano.</em></h1>
+          <p>En Imperio Dental cuidamos su salud bucal con diagnósticos precisos, tratamientos explicados con claridad y un equipo que lo acompaña en cada etapa.</p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn">Agendar una evaluación</a>
+            <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2000&q=80" alt="Box de atención de Imperio Dental con sillón y equipamiento moderno">
+        </figure>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Especialistas en el equipo</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10.000+</div>
+            <div class="stat-label">Pacientes atendidos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Servicios</span>
+            <h2>Atención integral para toda la familia</h2>
+          </div>
+          <p>Reunimos las principales especialidades en un solo lugar, para que cada tratamiento se planifique de forma coordinada y sin traslados innecesarios.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <span class="service-num">01</span>
+            <h3>Odontología general</h3>
+            <p>Controles, limpiezas, tratamiento de caries y prevención para mantener su salud bucal en el tiempo.</p>
+          </article>
+          <article class="service">
+            <span class="service-num">02</span>
+            <h3>Ortodoncia</h3>
+            <p>Brackets tradicionales, estéticos y alineadores transparentes para niños y adultos.</p>
+          </article>
+          <article class="service">
+            <span class="service-num">03</span>
+            <h3>Implantes dentales</h3>
+            <p>Reemplazo de piezas perdidas con implantes de titanio y coronas de aspecto natural.</p>
+          </article>
+          <article class="service">
+            <span class="service-num">04</span>
+            <h3>Estética dental</h3>
+            <p>Blanqueamiento, carillas y diseño de sonrisa con resultados armónicos y discretos.</p>
+          </article>
+          <article class="service">
+            <span class="service-num">05</span>
+            <h3>Endodoncia</h3>
+            <p>Tratamientos de conducto para conservar sus piezas dentales y aliviar el dolor.</p>
+          </article>
+          <article class="service">
+            <span class="service-num">06</span>
+            <h3>Odontopediatría</h3>
+            <p>Atención especializada para los más pequeños, en un ambiente tranquilo y amable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="about">
+      <div class="container about-grid">
+        <figure class="about-visual">
+          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1000&q=80" alt="Odontólogo realizando un examen dental">
+        </figure>
+        <div>
+          <span class="eyebrow">Nosotros</span>
+          <h2>Un compromiso serio con su sonrisa</h2>
+          <p>Imperio Dental nace con una idea simple: ofrecer una odontología rigurosa, transparente y humana. Cada paciente recibe un plan de tratamiento claro, con tiempos y costos definidos desde el inicio.</p>
+          <p>Trabajamos con equipamiento de diagnóstico digital y protocolos de esterilización estrictos, porque su seguridad es lo primero.</p>
+          <ul class="values">
+            <li><strong>Transparencia</strong><span>Presupuestos claros, sin sorpresas</span></li>
+            <li><strong>Precisión</strong><span>Diagnóstico digital y radiología</span></li>
+            <li><strong>Cercanía</strong><span>Seguimiento antes y después</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Cómo trabajamos</span>
+            <h2>Un proceso claro, de principio a fin</h2>
+          </div>
+          <p>Sabemos que acudir al dentista puede generar dudas. Por eso cada etapa está pensada para que usted sepa siempre qué esperar.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">I</span>
+            <h3>Evaluación</h3>
+            <p>Revisión completa, radiografías y conversación sobre sus necesidades.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">II</span>
+            <h3>Diagnóstico</h3>
+            <p>Le explicamos los hallazgos y las alternativas de tratamiento disponibles.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">III</span>
+            <h3>Plan y presupuesto</h3>
+            <p>Recibe un plan por escrito con etapas, plazos y costos detallados.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">IV</span>
+            <h3>Tratamiento</h3>
+            <p>Ejecutamos el plan y hacemos un seguimiento para asegurar el resultado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instalaciones -->
+    <section id="instalaciones" class="facilities">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Instalaciones</span>
+            <h2>Espacios pensados para su tranquilidad</h2>
+          </div>
+          <p>Ambientes luminosos, equipamiento actualizado y protocolos de higiene rigurosos en cada box de atención.</p>
+        </div>
+        <div class="gallery">
+          <figure class="g-large">
+            <img src="https://images.unsplash.com/photo-1728342057953-94bfad8f0e7e?auto=format&fit=crop&w=1400&q=80" alt="Sillón dental junto a una ventana con luz natural">
+            <figcaption>Box de atención</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?auto=format&fit=crop&w=900&q=80" alt="Sala de espera de la clínica">
+            <figcaption>Sala de espera</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80" alt="Odontólogo revisando radiografías dentales">
+            <figcaption>Diagnóstico por imagen</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonio -->
+    <section class="quote">
+      <div class="container">
+        <blockquote>“Me explicaron cada paso del tratamiento con calma y claridad. Por primera vez fui al dentista sin preocupaciones.”</blockquote>
+        <cite>Paciente de Imperio Dental</cite>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>Agende su hora</h2>
+          <p style="color: var(--ink-soft);">Déjenos sus datos y nos comunicaremos con usted dentro del día hábil para confirmar su cita.</p>
+          <dl class="contact-info">
+            <div><dt>Dirección</dt><dd>Av. Principal 1234, Of. 501</dd></div>
+            <div><dt>Teléfono</dt><dd>+00 0000 0000</dd></div>
+            <div><dt>Correo</dt><dd>contacto@imperiodental.com</dd></div>
+            <div><dt>Horario</dt><dd>Lunes a viernes, 9:00 a 19:00 · Sábado, 9:00 a 13:00</dd></div>
+          </dl>
+        </div>
+        <form id="form-cita" name="solicitud-cita" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="solicitud-cita">
+          <p hidden><label>No completar: <input name="bot-field"></label></p>
+          <div class="row">
+            <div><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" required autocomplete="name"></div>
+            <div><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div><label for="email">Correo electrónico</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          <div>
+            <label for="servicio">Servicio de interés</label>
+            <select id="servicio" name="servicio">
+              <option>Evaluación general</option>
+              <option>Ortodoncia</option>
+              <option>Implantes dentales</option>
+              <option>Estética dental</option>
+              <option>Endodoncia</option>
+              <option>Odontopediatría</option>
+            </select>
+          </div>
+          <div><label for="mensaje">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje"></textarea></div>
+          <div>
+            <button type="submit" class="btn">Solicitar cita</button>
+          </div>
+          <p class="form-note">Sus datos se usarán solo para coordinar su atención.</p>
+          <p class="form-ok" id="form-ok" role="status">Gracias. Hemos recibido su solicitud y lo contactaremos a la brevedad.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="brand">
+            <span class="brand-mark">ID</span>
+            <span class="brand-name">Imperio Dental</span>
+          </a>
+          <p>Clínica odontológica dedicada a la salud y estética bucal, con atención profesional y personalizada.</p>
+        </div>
+        <div>
+          <h4>Clínica</h4>
+          <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li>+00 0000 0000</li>
+            <li>contacto@imperiodental.com</li>
+            <li>Av. Principal 1234</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Imperio Dental. Todos los derechos reservados.</span>
+        <span>Director clínico: Dr. Nombre Apellido</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Envío del formulario a Netlify Forms (funciona una vez publicado en Netlify)
+    document.getElementById('form-cita').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var form = this;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var ok = document.getElementById('form-ok');
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        ok.textContent = 'Gracias. Hemos recibido su solicitud y lo contactaremos a la brevedad.';
+        ok.style.display = 'block';
+        form.reset();
+      }).catch(function () {
+        ok.textContent = 'No pudimos enviar su solicitud. Por favor, llámenos o escríbanos directamente.';
+        ok.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
